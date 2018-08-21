@@ -6,7 +6,7 @@
 /*   By: lode-spi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 04:50:03 by lode-spi          #+#    #+#             */
-/*   Updated: 2018/07/30 17:54:14 by lode-spi         ###   ########.fr       */
+/*   Updated: 2018/08/21 18:47:20 by lode-spi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ int		ft_printf(const char *restrict format, ...)
 	list = NULL;
 	list = build_list(format);
 	va_start(ap, format);
-	print_list(list);
+	//print_list(list);
 	process_list(list, ap);
-	print_list(list);
+	//print_list(list);
 	while (*format)
 	{
 		if (*format == '%' && *(format + 1) != '%')

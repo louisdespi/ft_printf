@@ -6,7 +6,7 @@
 /*   By: lode-spi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/22 20:30:12 by lode-spi          #+#    #+#             */
-/*   Updated: 2018/07/30 18:07:24 by lode-spi         ###   ########.fr       */
+/*   Updated: 2018/08/21 19:23:31 by lode-spi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,14 @@
 # define FT_PRINTF_H
 # include "../libft/includes/libft.h"
 # include <stdarg.h>
+# include <stdio.h>
 
 typedef struct	s_field
 {
 	char	formspec;
 	char	*value;
 	size_t	size_value;
-	int		size;
+	int		size; //size of the whole field in the original format
 	char	options;
 	int		width;
 	int		precision;
@@ -58,9 +59,13 @@ int				get_precision(const char *restrict *format);
 char			get_length(const char *restrict *format);
 char			get_specif(const char *restrict *format);
 
+void			manage_width(t_field *field);
+void			manage_options(t_field *field);
+
 int				is_option(int c);
 int				is_formspec(int c);
 int				is_length(int c);
+int				is_bit_on(int c, int offset);
 
 static t_func g_tab[] = 
 {

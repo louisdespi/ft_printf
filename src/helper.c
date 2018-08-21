@@ -6,7 +6,7 @@
 /*   By: lode-spi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/30 15:34:12 by lode-spi          #+#    #+#             */
-/*   Updated: 2018/07/30 15:38:23 by lode-spi         ###   ########.fr       */
+/*   Updated: 2018/08/21 19:23:10 by lode-spi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,9 @@ int		is_formspec(int c)
 int		is_length(int c)
 {
 	return (c == 'h' || c == 'l' || c == 'j' || c == 'z');
+}
+
+int		is_bit_on(int c, int offset)
+{
+	return ((c>>offset)&1);
 }

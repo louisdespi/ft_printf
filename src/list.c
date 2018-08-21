@@ -3,22 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   list.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lode-spi <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/30 18:07:25 by lode-spi          #+#    #+#             */
-/*   Updated: 2018/07/30 18:07:25 by lode-spi         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   list.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
 /*   By: louis <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/24 18:34:07 by louis             #+#    #+#             */
-/*   Updated: 2018/07/30 18:05:37 by lode-spi         ###   ########.fr       */
+/*   Updated: 2018/08/21 18:17:24 by lode-spi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,41 +31,6 @@ t_field			*parse_formspec(const char *restrict *format)
 	field->formspec = get_specif(format);
 	return (field);
 }
-
-/*t_list			*build_list(const char *restrict format)
-{
-	t_field		*field;
-	t_list		*list;
-	t_list		*ret;
-	int			size;
-
-	list = NULL;
-	while (*format)
-	{
-		if (*format == '%' && *format + 1 != '%')
-		{
-			size = 1;
-			while (*format && !(is_formspec(*format)))
-			{
-				format++;
-				if (is_formspec(*format))
-				{
-					if (!(field = (t_field*)malloc(sizeof(*field))))
-						return (NULL);
-					field->formspec = *format;
-					field->size = size;
-					field->value = NULL;
-					ret = ft_lstnew(field, sizeof(*field));
-					ft_lstaddback(&list, ret);
-					break;
-				}
-				size++;
-			}
-		}
-		format++;
-	}
-	return (list);
-}*/
 
 t_list			*build_list(const char *restrict format)
 {

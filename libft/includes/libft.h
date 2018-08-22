@@ -6,7 +6,7 @@
 /*   By: lode-spi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/11 08:46:39 by lode-spi          #+#    #+#             */
-/*   Updated: 2018/07/27 05:34:09 by lode-spi         ###   ########.fr       */
+/*   Updated: 2018/08/22 20:33:19 by lode-spi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,5 +94,6 @@ char			*ft_getaddress(void *addr);
 void			ft_printchartable(char *s, size_t size);
 char			*ft_ltoa(long n);
 void			ft_putchar_utf8(int n);
+char			*ft_strforcejoin(char *s1, char *s2);
 
 #endif

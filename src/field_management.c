@@ -6,7 +6,7 @@
 /*   By: lode-spi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/21 18:11:21 by lode-spi          #+#    #+#             */
-/*   Updated: 2018/08/21 19:54:59 by lode-spi         ###   ########.fr       */
+/*   Updated: 2018/08/22 20:40:24 by lode-spi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,21 +34,15 @@ void	manage_width(t_field *field)
 	}
 	ret[i] = '\0';
 	field->value = tag;
-	field->size_value = width;
 }
 
 void	manage_options(t_field *field)
 {
-	char	*start;
-	char	*end;
-
 	if (is_bit_on(field->options, 0)) // "-"
-	{
-		printf("[-] -> Left-justify the result within the field width.\n");
-	}
+		left_justify(field);
 	if (is_bit_on(field->options, 1)) // "+"
 	{
-		printf("[+] -> Prefix the output value with a sign (+ or -) if the output value is of a signed type.\n");
+		prefix_value(field, "ox");
 	}
 	if (is_bit_on(field->options, 2)) // "#"
 	{

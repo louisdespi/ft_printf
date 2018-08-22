@@ -6,7 +6,7 @@
 /*   By: lode-spi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 04:50:03 by lode-spi          #+#    #+#             */
-/*   Updated: 2018/08/21 18:47:20 by lode-spi         ###   ########.fr       */
+/*   Updated: 2018/08/22 16:59:11 by lode-spi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int		ft_printf(const char *restrict format, ...)
 		if (*format == '%' && *(format + 1) != '%')
 		{
 			curr = ((t_field*)list->content);
-			ft_printchartable(curr->value, curr->size_value);
+			ft_printchartable(curr->value, ft_max(curr->size_value, curr->width));
 			format += (curr->size);
 			list = list->next;
 		}

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lode-spi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/22 20:30:12 by lode-spi          #+#    #+#             */
-/*   Updated: 2018/08/21 19:23:31 by lode-spi         ###   ########.fr       */
+/*   Created: 2018/08/22 20:41:35 by lode-spi          #+#    #+#             */
+/*   Updated: 2018/08/22 20:58:26 by lode-spi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@ int				is_option(int c);
 int				is_formspec(int c);
 int				is_length(int c);
 int				is_bit_on(int c, int offset);
+void			left_justify(t_field *field);
+void			prefix_value(t_field *field, char *prefix);
 
 static t_func g_tab[] = 
 {

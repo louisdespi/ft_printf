@@ -6,7 +6,7 @@
 /*   By: lode-spi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/24 02:13:15 by lode-spi          #+#    #+#             */
-/*   Updated: 2018/08/22 16:50:58 by lode-spi         ###   ########.fr       */
+/*   Updated: 2018/08/28 15:08:48 by lode-spi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ void	spec_d(t_field *field, va_list ap)
 	if (!(field->value = ft_itoa(va_arg(ap, int))))
 		return ;
 	field->size_value = ft_strlen(field->value);
-	manage_width(field);
-	manage_options(field);
+	option_1(field);
+	option_0(field);
 }
 
 void	spec_s(t_field *field, va_list ap)

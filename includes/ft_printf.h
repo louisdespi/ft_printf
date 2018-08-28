@@ -6,7 +6,7 @@
 /*   By: lode-spi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/22 20:41:35 by lode-spi          #+#    #+#             */
-/*   Updated: 2018/08/22 20:58:26 by lode-spi         ###   ########.fr       */
+/*   Updated: 2018/08/28 15:08:03 by lode-spi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,15 +59,14 @@ int				get_precision(const char *restrict *format);
 char			get_length(const char *restrict *format);
 char			get_specif(const char *restrict *format);
 
-void			manage_width(t_field *field);
-void			manage_options(t_field *field);
+char			*get_width_str(t_field *field);
+void			option_0(t_field *field);
+void			option_1(t_field *field);
 
 int				is_option(int c);
 int				is_formspec(int c);
 int				is_length(int c);
 int				is_bit_on(int c, int offset);
-void			left_justify(t_field *field);
-void			prefix_value(t_field *field, char *prefix);
 
 static t_func g_tab[] = 
 {

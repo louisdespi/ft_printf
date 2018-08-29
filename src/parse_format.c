@@ -6,7 +6,7 @@
 /*   By: lode-spi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/30 15:10:24 by lode-spi          #+#    #+#             */
-/*   Updated: 2018/08/21 19:40:31 by lode-spi         ###   ########.fr       */
+/*   Updated: 2018/08/29 19:25:59 by lode-spi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,15 @@ char	get_options(const char *restrict *format)
 	c = 0;
 	while (**format && is_option(**format))
 	{
-		if (**format == '-')
+		if (**format == '-') //option 0
 			c |= 1;
-		if (**format == '+')
+		if (**format == '+') //option 1
 			c |= 2;
-		if (**format == '#')
+		if (**format == '#') //option 2
 			c |= 4;
-		if (**format == '0')
+		if (**format == '0') //option 3
 			c |= 8;
-		if (**format == ' ')
+		if (**format == ' ') //option 4
 			c |= 16;
 		(*format)++;
 	}

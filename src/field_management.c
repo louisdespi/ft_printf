@@ -6,7 +6,7 @@
 /*   By: lode-spi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/21 18:11:21 by lode-spi          #+#    #+#             */
-/*   Updated: 2018/08/28 15:09:56 by lode-spi         ###   ########.fr       */
+/*   Updated: 2018/08/29 23:14:00 by lode-spi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char	*get_width_str(t_field *field)
 	return (tag);
 }
 
-void	option_0(t_field *field)
+void	option_0(t_field *field) //option "-"
 {
 	if (is_bit_on(field->options, 0)) // if option "-" is set
 		field->value = ft_strforcejoin(field->value, get_width_str(field));
@@ -38,14 +38,64 @@ void	option_0(t_field *field)
 		field->value = ft_strforcejoin(get_width_str(field), field->value);
 }
 
-void	option_1(t_field *field)
+void	option_1(t_field *field) //option "+"
 {
-	if (is_bit_on(field->options, 1))
+	if (!is_bit_on(field->options, 1))
+		return ;
+	if (ft_atoi(field->value) > 0)
 	{
-		if (ft_atoi(field->value) > 0)
-		{
-			field->value = ft_strforcejoin("+", field->value);
-			field->size_value = ft_strlen(field->value);
-		}
+		field->value = ft_strforcejoin("+", field->value);
+		field->size_value = ft_strlen(field->value);
 	}
 }
+
+void	option_2(t_field *field) //option "#"
+{
+	if (!is_bit_on(field->options, 2))
+		return ;
+	if (field->init_value == 0)
+		return ;
+	if (field->formspec == 'x')
+		field->value = ft_strforcejoin("0x", field->value);
+	if (field->formspec == 'X')
+		field->value = ft_strforcejoin("0X", field->value);
+	if (field->formspec == 'o' || field->formspec == 'O')
+		field->value = ft_strforcejoin("0", field->value);
+	field->size_value = ft_strlen(field->value);
+}
+
+void	option_3(t_field *field) //option "0"
+{
+	char	*t;
+	int		amount;
+	int		i;
+	char	sign;
+
+	if (!is_bit_on(field->options, 3))
+		return ;
+	if (is_bit_on(field->options, 0))
+		return ;
+	if (field->width - field->size_value <= 0)
+		return ;
+	t = field->value;
+	amount = field->width - field->size_value;
+	sign = cut_sign(field);
+	if (sign != 0)
+		*t++ = sign;
+	i = -1;
+	while (++i < amount)
+		*t++ = '0';
+}
+
+void	option_4(t_field *field) //option " "
+{
+	if (!is_bit_on(field->options, 4))
+		return ;
+	if (is_bit_on(field->options, 1))
+		return ;
+	if (ft_atoi(field->value) <= 0)
+		return ;
+	field->value = ft_strforcejoin(" ", field->value);
+	field->size_value = ft_strlen(field->value);
+}
+

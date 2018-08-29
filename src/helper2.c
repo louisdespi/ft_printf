@@ -6,10 +6,27 @@
 /*   By: lode-spi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/22 15:49:07 by lode-spi          #+#    #+#             */
-/*   Updated: 2018/08/28 15:08:50 by lode-spi         ###   ########.fr       */
+/*   Updated: 2018/08/29 18:18:38 by lode-spi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
+char	cut_sign(t_field *field)
+{
+	char	*t;
+	char	sign;
 
+	t = field->value;
+	sign = 0;
+	while (*t)
+	{
+		if (*t == '+' || *t == '-')
+		{
+			sign = *t;
+			*t = ' ';
+		}
+		t++;
+	}
+	return (sign);
+}

@@ -6,7 +6,7 @@
 /*   By: lode-spi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/22 20:41:35 by lode-spi          #+#    #+#             */
-/*   Updated: 2018/08/28 15:08:03 by lode-spi         ###   ########.fr       */
+/*   Updated: 2018/08/29 23:04:20 by lode-spi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 
 typedef struct	s_field
 {
+	long	init_value;
 	char	formspec;
 	char	*value;
 	size_t	size_value;
@@ -62,11 +63,15 @@ char			get_specif(const char *restrict *format);
 char			*get_width_str(t_field *field);
 void			option_0(t_field *field);
 void			option_1(t_field *field);
+void			option_2(t_field *field);
+void			option_3(t_field *field);
+void			option_4(t_field *field);
 
 int				is_option(int c);
 int				is_formspec(int c);
 int				is_length(int c);
 int				is_bit_on(int c, int offset);
+char			cut_sign(t_field *field);
 
 static t_func g_tab[] = 
 {

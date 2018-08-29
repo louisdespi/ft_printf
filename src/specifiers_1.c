@@ -6,7 +6,7 @@
 /*   By: lode-spi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/24 02:13:15 by lode-spi          #+#    #+#             */
-/*   Updated: 2018/08/28 15:08:48 by lode-spi         ###   ########.fr       */
+/*   Updated: 2018/08/29 23:13:27 by lode-spi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,68 +26,96 @@ void	(*get_func(char c))(t_field *field, va_list ap)
 	return (NULL);
 }
 
+void	do_options(t_field *field)
+{
+	option_1(field);
+	option_4(field);
+	option_2(field);
+	option_0(field);
+	option_3(field);
+}
+
 void	spec_D(t_field *field, va_list ap)
 {
-	field->value = ft_ltoa(va_arg(ap, long int));
+	field->init_value = va_arg(ap, long int);
+	if (!(field->value = ft_ltoa(field->init_value)))
+		return ;
 	field->size_value = ft_strlen(field->value);
+	do_options(field);
 }
 
 void	spec_d(t_field *field, va_list ap)
 {
-	if (!(field->value = ft_itoa(va_arg(ap, int))))
+	field->init_value = va_arg(ap, int);
+	if (!(field->value = ft_itoa(field->init_value)))
 		return ;
 	field->size_value = ft_strlen(field->value);
-	option_1(field);
-	option_0(field);
+	do_options(field);
 }
 
 void	spec_s(t_field *field, va_list ap)
 {
+	field->init_value = 0;
 	field->value = va_arg(ap, char*);
 	field->size_value = ft_strlen(field->value);
+	do_options(field);
 }
 
 void	spec_p(t_field *field, va_list ap)
 {
+	field->init_value = 0;
 	field->value = ft_getaddress(va_arg(ap, void*));
 	field->size_value = ft_strlen(field->value);
+	do_options(field);
 }
 
 void	spec_o(t_field *field, va_list ap)
 {
-	field->value = ft_itoa_base(va_arg(ap, unsigned int), 8, 0);
+	field->init_value = va_arg(ap, unsigned int);
+	field->value = ft_itoa_base(field->init_value, 8, 0);
 	field->size_value = ft_strlen(field->value);
+	do_options(field);
 }
 
 void	spec_O(t_field *field, va_list ap)
 {
-	field->value = ft_itoa_base(va_arg(ap, unsigned long), 8, 0);
+	field->init_value = va_arg(ap, unsigned long);
+	field->value = ft_itoa_base(field->init_value, 8, 0);
 	field->size_value = ft_strlen(field->value);
+	do_options(field);
 }
 
 void	spec_u(t_field *field, va_list ap)
 {
-	field->value = ft_itoa_base(va_arg(ap, unsigned long), 10, 0);
+	field->init_value = va_arg(ap, unsigned long);
+	field->value = ft_itoa_base(field->init_value, 10, 0);
 	field->size_value = ft_strlen(field->value);
+	do_options(field);
 }
 
 void	spec_x(t_field *field, va_list ap)
 {
-	field->value = ft_itoa_base(va_arg(ap, unsigned int), 16, 0);
+	field->init_value = va_arg(ap, unsigned int);
+	field->value = ft_itoa_base(field->init_value, 16, 0);
 	field->size_value = ft_strlen(field->value);
+	do_options(field);
 }
 
 void	spec_X(t_field *field, va_list ap)
 {
-	field->value = ft_itoa_base(va_arg(ap, unsigned int), 16, 1);
+	field->init_value = va_arg(ap, unsigned int);
+	field->value = ft_itoa_base(field->init_value, 16, 1);
 	field->size_value = ft_strlen(field->value);
+	do_options(field);
 }
 
 void	spec_c(t_field *field, va_list ap)
 {
+	field->init_value = 0;
 	if (!(field->value = (char*)malloc(sizeof(char) * 2)))
 		return ;
 	field->value[1] = '\0';
 	field->value[0] = (char)va_arg(ap, unsigned int);
 	field->size_value = 1;
+	do_options(field);
 }
